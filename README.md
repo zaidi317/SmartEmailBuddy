@@ -15,13 +15,6 @@
 
 ---
 
-## 📸 Screenshots
-
-> Add screenshots here of your interface  
-> (e.g., inbox view, summary, unsubscribe page)
-
----
-
 ## 🛠️ Tech Stack
 
 - Python 3.10+

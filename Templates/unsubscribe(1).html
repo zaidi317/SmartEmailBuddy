@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsubscribe from Emails</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Unsubscribe from Emails</h1>
+        <form action="/unsubscribe" method="POST">
+            <div class="list-group">
+                {% for email in emails %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">From: {{ email['From'] }}</h5>
+                    <p class="mb-1">Subject: {{ email['Subject'] }}</p>
+                    <a href="{{ email['Unsubscribe_Link'] }}" target="_blank" class="btn btn-danger">Unsubscribe</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="mt-3">
+                <label>Are you sure you want to unsubscribe from these emails?</label><br>
+                <input type="radio" id="yes" name="choice" value="yes">
+                <label for="yes">Yes</label>
+                <input type="radio" id="no" name="choice" value="no">
+                <label for="no">No</label><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

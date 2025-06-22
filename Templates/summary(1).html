@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summaries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .email-card {
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .email-card:hover {
+            background-color: #f0f0f0;
+        }
+        .email-info {
+            margin-bottom: 10px;
+        }
+        .email-info strong {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .email-summary {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .email-actions {
+            text-align: right;
+        }
+        .email-actions button {
+            background-color: #7289da;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .email-actions button:hover {
+            background-color: #677bc4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Inbox</h1>
+        <div class="emails">
+            {% for email in emails %}
+            <div class="email-card">
+                <div class="email-info">
+                    <strong>From:</strong> {{ email.From }}<br>
+                    <strong>To:</strong> {{ email.To }}<br>
+                    <strong>Subject:</strong> {{ email.Subject }}<br>
+                    <strong>Date:</strong> {{ email.Date }}<br>
+                </div>
+                <div class="email-summary">
+                    <strong>Summary:</strong> {{ email.Summary }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

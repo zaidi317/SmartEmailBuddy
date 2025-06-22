@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Responses</title>
+</head>
+<body>
+    <h1>Generate Responses</h1>
+    <ul>
+        {% for response in responses %}
+        <li>
+            <strong>Sender:</strong> {{ response.sender }}<br>
+            <strong>Subject:</strong> {{ response.subject }}<br>
+            <strong>Response:</strong> {{ response.response }}
+            <form id="sendResponseForm{{ loop.index }}" method="post" action="/send_response">
+                <input type="hidden" name="response_text" value="{{ response.response }}">
+                <input type="hidden" name="recipient_email" value="{{ response.sender }}">
+                <button type="button" onclick="confirmSend('{{ response.response }}', {{ loop.index }})">Send Response</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <script>
+        function confirmSend(responseText, index) {
+            var confirmSend = confirm("Do you want to send the following response?\n\n" + responseText);
+            if (confirmSend) {
+                document.getElementById("confirmationMessage" + index).innerText = "Response sent successfully.";
+                document.getElementById("sendResponseForm" + index).submit();
+            } else {
+                document.getElementById("confirmationMessage" + index).innerText = "Response not sent.";
+            }
+        }
+    </script>
+</body>
+</html>
